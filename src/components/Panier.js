@@ -20,6 +20,8 @@ class Panier extends Component {
         <hr />
         <p>
           <b>Total: {this.state.total} €</b>
+          <br />
+          <b>Nombre de pizzas : 10</b>
         </p>
         <br />
         <button className="button is-warning">Vider le panier</button>

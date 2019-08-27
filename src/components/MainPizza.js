@@ -25,8 +25,13 @@ class MainPizza extends Component {
               <div className="field">
                 <Filter />
               </div>
+              <article className="message is-success">
+              <div className="message-body">
+                {this.state.elementsPanier.length} pizzas sélectionnées
+              </div>
+            </article>
             </div>
-            <PizzaList />
+            <PizzaList elementsPanier={this.state.elementsPanier}/>
           </div>
           <div className="column is-2-desktop is-12-tablet">
             <Panier elementsPanier={this.state.elementsPanier}/>
