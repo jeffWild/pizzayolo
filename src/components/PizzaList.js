@@ -21,8 +21,10 @@ class PizzaList extends Component {
 
   componentDidMount() {
     fetchPizza().then(pizzas => {
-      this.setState({pizzaList: pizzas});
-      this.setState({isLoading: false});
+      this.setState({
+        pizzaList: pizzas,
+        isLoading:false
+      });
     })
   }
 
