@@ -1,58 +1,37 @@
 import React, { Component } from "react";
 import TopBar from "./TopBar";
 import Pizza from "./Pizza";
+import Panier from "./Panier";
+import Filter from "./Filter";
 
 class PizzaList extends Component {
+
   render() {
     return (
       <>
-        <TopBar />
-        <section className="section main-container">
-          <div className="container">
-            <div className="columns is-multiline">
-              <div className="column is-10-desktop is-12-tablet">
-                <div className="filter-container">
-                  <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
-                  <div className="field">
-                    <label className="label">Filtrer: </label>
-                    <div className="control">
-                      <input
-                        className="input is-primary"
-                        type="text"
-                        placeholder="nom de la pizza"
-                      />
-                    </div>
-                    <Pizza
-                      nom="Margerita"
-                      price="10€"
-                      ingredients="tomate, mozzarella, basilic, huile d'olive"
-                    />
-                    <Pizza
-                      nom="Margerita"
-                      price="10€"
-                      ingredients="tomate, mozzarella, basilic, huile d'olive"
-                    />
-                    <Pizza
-                      nom="Margerita"
-                      price="10€"
-                      ingredients="tomate, mozzarella, basilic, huile d'olive"
-                    />
-                    <Pizza
-                      nom="Margerita"
-                      price="10€"
-                      ingredients="tomate, mozzarella, basilic, huile d'olive"
-                    />
-                    <Pizza
-                      nom="Margerita"
-                      price="10€"
-                      ingredients="tomate, mozzarella, basilic, huile d'olive"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="columns is-multiline">
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza prix="toto" ingredients="tomate,mozza,oeuf" id="1"/>
           </div>
-        </section>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="margerita" prix="12" ingredients="tomate,mozza,oeuf" id="1"/>
+          </div>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="thon" prix="15" ingredients="tomate,mozza,thon,mayo" id="2"/>
+          </div>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="chevre" prix="11" ingredients="chevre, miel" id="3"/>
+          </div>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="carnivore" prix="13" ingredients="viande" id="4"/>
+          </div>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="saumon" prix="17" ingredients="saumon, fromage" id="5"/>
+          </div>
+          <div className="column is-4-desktop is-6-tablet">
+            <Pizza nom="margerita" prix="toto" ingredients="tomate,mozza,oeuf" id="1"/>
+          </div>
+        </div>
       </>
     );
   }

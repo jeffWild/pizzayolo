@@ -1,30 +1,38 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-class Pizza extends Component {
-  render() {
+function Pizza ({nom,prix,ingredients,id}) {
     return (
       <>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <div class="columns">
-                <div class="column is-9">
-                  <p class="title is-4">{this.props.nom}</p>
+        <div className="card-content">
+          <div className="media">
+            <div className="media-content">
+              <div className="columns">
+                <div className="column is-9">
+                  <p className="title is-4">{nom}</p>
                 </div>
-                <div class="column is-3">
-                  <p class="title is-4 has-text-primary">{this.props.price}</p>
+                <div className="column is-3">
+                  <p className="title is-4 has-text-primary">{prix}€</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="content">{this.props.ingredients}</div>
-          <button type="button" class="button is-primary is-small is-rounded">
+          <div className="content">{ingredients}</div>
+          <button type="button" 
+                className="button is-primary is-small is-rounded">
             Ajouter au panier
           </button>
         </div>
       </>
     );
-  }
 }
+
+Pizza.defaultProps = {
+  nom: "ceciestunepizza"
+};
+
+Pizza.propTypes = {
+  prix: PropTypes.number.isRequired
+};
 
 export default Pizza;
