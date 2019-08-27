@@ -4,11 +4,16 @@ import ReactDOM from "react-dom";
 import "bulma/css/bulma.css";
 import "./assets/styles.scss";
 
+import TopBar from "./components/TopBar";
+
 function App() {
   return (
-    <div className="App">
-      <p>Salut</p>
-    </div>
+    <>
+      <div className="App">
+        <TopBar />
+        <p>Salut</p>
+      </div>
+    </>
   );
 }
 
