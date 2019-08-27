@@ -5,13 +5,14 @@ import "bulma/css/bulma.css";
 import "./assets/styles.scss";
 
 import TopBar from "./components/TopBar";
+import Accueil from "./components/Accueil";
 
 function App() {
   return (
     <>
       <div className="App">
         <TopBar />
-        <p>Salut</p>
+        <Accueil />
       </div>
     </>
   );
