@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import TopBar from "./TopBar";
 import PizzaList from "./PizzaList";
 import Panier from "./Panier";
 import Filter from "./Filter";

@@ -37,8 +37,9 @@ class PizzaList extends Component {
         })}
           
           {this.state.pizzaList.map((pizza, i) => (
-            <div className="column is-4-desktop is-6-tablet" key={i}>
-                <Pizza key={i} id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
+            <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
+                <Pizza id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
+                {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </div>
           ))}
         </div>
