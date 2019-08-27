@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Pizza from "./Pizza";
 import fetchPizza from "../services/fetchPizza"
+import Chargement from "./Chargement";
 
 class PizzaList extends Component {
 
@@ -9,7 +10,8 @@ class PizzaList extends Component {
 
     this.state = {
       pizzaSelectionneesList: [],
-      pizzaList: []
+      pizzaList: [],
+      isLoading: true
     };
   }
 
@@ -20,20 +22,25 @@ class PizzaList extends Component {
   componentDidMount() {
     fetchPizza().then(pizzas => {
       this.setState({pizzaList: pizzas});
+      this.setState({isLoading: false});
     })
   }
 
   render() {
-    console.log(this.state);
+    if (this.state.isLoading) {
+      return <Chargement/>;
+    }
     return (
       <>
         <div className="columns is-multiline">
-          <div className="column is-4-desktop is-6-tablet">
-          <Pizza nom="exemple" prix="10" ingredients="salade,tomate" ajoutPanier="{this.ajoutPanier}"/>
-          {this.state.pizzaList.map((pizza) => (
-          <Pizza nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
+        
+        })}
+          
+          {this.state.pizzaList.map((pizza, i) => (
+            <div className="column is-4-desktop is-6-tablet" key={i}>
+                <Pizza key={i} id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
+              </div>
           ))}
-          </div>
         </div>
       </>
     );
