@@ -12,19 +12,21 @@ export default function PizzaList(props) {
           <b>{`${props.pizzaFilteredList.length} pizzas disponibles`}</b>
         </div>
       </article>
-      <div className="columns is-multiline">
-        {props.pizzaFilteredList.map((pizza) => (
-          <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-              <Pizza id={pizza.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={props.ajoutPanier}/>
-              {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
-            </div>
-        ))}
+      <div className="hero is-fullheight">
+        <div className="columns is-multiline">
+          {props.pizzaFilteredList.map((pizza) => (
+            <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
+                <Pizza id={pizza.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={props.ajoutPanier}/>
+                {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
+              </div>
+          ))}
+        </div>
       </div>
     </>
   );
 }
 
-PizzaList.PropTypes = {
+PizzaList.propTypes = {
   pizzaFilteredList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

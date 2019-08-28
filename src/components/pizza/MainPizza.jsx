@@ -38,17 +38,17 @@ class MainPizza extends Component {
     return (
       <>
         <ErrorBoundary>
-        <div className="columns is-multiline">
-          <div className="column is-10-desktop is-12-tablet">
-            <div className="filter-container">
-              <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
+          <div className="columns is-multiline">
+            <div className="column is-10-desktop is-12-tablet">
+              <div className="filter-container">
+                <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
+              </div>
+              <PizzaListContainer ajoutPanier={this.ajoutPanier} />
             </div>
-            <PizzaListContainer ajoutPanier={this.ajoutPanier} />
+            <div className="column is-2-desktop is-12-tablet">
+              <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} enleverPanier={this.enleverPanier}/>
+            </div>
           </div>
-          <div className="column is-2-desktop is-12-tablet">
-            <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} enleverPanier={this.enleverPanier}/>
-          </div>
-        </div>
         </ErrorBoundary>
       </>
     );

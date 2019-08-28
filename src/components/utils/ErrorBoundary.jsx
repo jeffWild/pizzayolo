@@ -9,7 +9,6 @@ class ErrorBoundary extends Component {
   }
   
   static getDerivedStateFromError(error) {
-    console.log("getDerivedStateFromError", error)
     return { errorMessage: error.message }; // mise à jour du state
   }
 

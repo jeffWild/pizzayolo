@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import PizzaPanier from "./PizzaPanier";
+import { Link, withRouter } from 'react-router-dom';
 
 class Panier extends Component {
 
+  payer = () => {
+    this.props.history.push('/paiement');
+  };
+
   render() {
-    console.log(this.props.pizzaPanierList);
     return (
       <>
         <h2 className="title is-h2">Mon Panier</h2>
@@ -25,9 +29,10 @@ class Panier extends Component {
         </p>
         <br />
         <button className="button is-warning" onClick={() => this.props.viderPanier()}>Vider le panier</button>
+        <button className="button is-success" onClick={this.payer}>Payer</button>
       </>
     );
   }
 }
 
-export default Panier;
+export default withRouter(Panier);

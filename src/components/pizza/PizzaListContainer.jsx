@@ -17,12 +17,9 @@ class PizzaListContainer extends Component {
   }
 
   updateFilter = (event) => {
-    //console.log("passage dans le updateFilter, filtre: ", event.target.value);
     const pizzaFilteredList = this.state.pizzaList.filter(pizza => {
-      //console.log("test de la pizza ", pizza.nom);
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    //console.log("fin du updateFilter, il y a ", pizzaFilteredList.length, " dans la liste");
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
@@ -46,10 +43,12 @@ class PizzaListContainer extends Component {
     }
   
     return (
-      <PizzaList 
-      updateFilter={this.updateFilter} 
-      pizzaFilteredList={this.state.pizzaFilteredList} 
-      ajoutPanier={this.props.ajoutPanier}/>
+      <>
+          <PizzaList 
+          updateFilter={this.updateFilter} 
+          pizzaFilteredList={this.state.pizzaFilteredList} 
+          ajoutPanier={this.props.ajoutPanier}/>
+      </>
     );
   }
 }
