@@ -1,13 +1,34 @@
 import React, { Component } from "react";
+import {fetchPizzaByName} from "../../services/fetchPizza"
 
-function PizzaFocus(props) {
-  console.log("props : ",props);
-  return (
-    <>
-      <div>{props.match.params.nom} - la meilleure pizza batard</div>          
-    </>
-  );
+class PizzaFocus extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pizza:{}
+    };
+  }
+
+  componentDidMount() {
+    fetchPizzaByName(this.props.match.params.nom.toLowerCase()).then(pizza => {
+      console.log("la pizza reine :", pizza);
+      this.setState({
+        pizza: pizza
+      });
+    }).catch((e)=>{
+      this.setState({isLoading: false});
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <div>{this.props.match.params.nom} - la meilleure pizza</div>          
+      </>
+    );
+  }
 }
-
 
 export default PizzaFocus;

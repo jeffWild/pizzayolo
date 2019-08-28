@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PizzaList from "../pizza/PizzaList";
-import fetchPizza from "../../services/fetchPizza"
+import {fetchPizza} from "../../services/fetchPizza"
 import Chargement from "../utils/Chargement";
 
 class PizzaListContainer extends Component {

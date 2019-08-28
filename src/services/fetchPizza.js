@@ -1,4 +1,5 @@
 import pizzaData from "./pizzas.json"
+import reine from "./reine.json"
 
 export const fetchPizza = () => 
   new Promise((resolve,reject) => {
@@ -8,4 +9,10 @@ export const fetchPizza = () =>
     }, 500);
   });
 
-  export default fetchPizza;
+  export const fetchPizzaByName = (nom) => 
+  new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve(`${nom}`);
+      //reject(pizzaData);
+    }, 500);
+  });
