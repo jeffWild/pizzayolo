@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import PizzaList from "./PizzaList";
 import Panier from "./Panier";
-import Filter from "./Filter";
 
 class MainPizza extends Component {
 
@@ -21,14 +20,6 @@ class MainPizza extends Component {
           <div className="column is-10-desktop is-12-tablet">
             <div className="filter-container">
               <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
-              <div className="field">
-                <Filter />
-              </div>
-              <article className="message is-success">
-              <div className="message-body">
-                {this.state.elementsPanier.length} pizzas sélectionnées
-              </div>
-            </article>
             </div>
             <PizzaList elementsPanier={this.state.elementsPanier}/>
           </div>

@@ -7,9 +7,11 @@ class Filter extends Component {
         <label className="label">Filtrer: </label>
         <div className="control">
           <input
+            name="filter"
             className="input is-primary"
             type="text"
             placeholder="nom de la pizza"
+            onChange={this.props.updateFilter}
           />
         </div>
       </>

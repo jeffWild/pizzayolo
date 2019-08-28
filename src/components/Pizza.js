@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function Pizza ({id,nom,prix,ingredients}) {
+function Pizza ({nom,prix,ingredients,ajoutPanier}) {
     return (
       <>
         <div className="card-content">
@@ -19,7 +19,8 @@ function Pizza ({id,nom,prix,ingredients}) {
           </div>
           <div className="content">{ingredients}</div>
           <button type="button" 
-                className="button is-primary is-small is-rounded">
+                className="button is-primary is-small is-rounded"
+                onClick={ajoutPanier}>
             Ajouter au panier
           </button>
         </div>
@@ -32,7 +33,7 @@ Pizza.defaultProps = {
 };
 
 Pizza.propTypes = {
-  //prix: PropTypes.number.isRequired
+  prix: PropTypes.number.isRequired
 };
 
 export default Pizza;
