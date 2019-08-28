@@ -28,7 +28,7 @@ class PizzaList extends Component {
 
   updateFilter = (event) => {
     console.log("passage dans le updateFilter, filtre: ", event.target.value);
-    const pizzaListFiltered2 = this.state.pizzaList.filter(pizza => {
+    const pizzaListFiltered2 = this.state.pizzaListData.filter(pizza => {
       console.log("test de la pizza ", pizza.nom);
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
@@ -55,7 +55,7 @@ class PizzaList extends Component {
     if (this.state.isLoading) {
       return <Chargement/>;
     }
-    console.log("liste des pizza filtrées ", this.state.pizzaListFiltered);
+    console.log("liste des pizza filtrées ", this.state.pizzaList);
     return (
       <>
         <Filter updateFilter={this.updateFilter}/>
