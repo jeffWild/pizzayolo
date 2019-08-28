@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import PizzaList from "./PizzaList";
 import Panier from "./Panier";
+import ErrorBoundary from "./ErrorBoundary";
 
 class MainPizza extends Component {
 
@@ -15,7 +16,7 @@ class MainPizza extends Component {
 
   ajoutPanier = (pizzaPanier) => {
     this.setState({pizzaPanierList: [...this.state.pizzaPanierList, pizzaPanier]});
-    //console.log("ajoutPanier MAIN", pizzaPanier);
+    console.log("ajoutPanier MAIN", pizzaPanier);
   };
 
   viderPanier = () => {
@@ -25,10 +26,18 @@ class MainPizza extends Component {
     }
   };
 
+  enleverPanier = (pizzaAEnlever) => {
+    console.log("enleverPanier", pizzaAEnlever.id);
+    const filtered = this.state.pizzaPanierList.filter((pizzaPanier) => {
+      return pizzaPanier.id !== pizzaAEnlever.id;
+    });
+    this.setState({pizzaPanierList: filtered});
+  };
+
   render() {
-    //console.log("nb éléments dans le panier ", this.state.pizzaPanierList.length);
     return (
       <>
+        <ErrorBoundary>
         <div className="columns is-multiline">
           <div className="column is-10-desktop is-12-tablet">
             <div className="filter-container">
@@ -37,9 +46,10 @@ class MainPizza extends Component {
             <PizzaList ajoutPanier={this.ajoutPanier} />
           </div>
           <div className="column is-2-desktop is-12-tablet">
-            <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} />
+            <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} enleverPanier={this.enleverPanier}/>
           </div>
         </div>
+        </ErrorBoundary>
       </>
     );
   }

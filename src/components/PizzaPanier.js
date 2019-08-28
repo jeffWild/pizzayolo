@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function PizzaPanier ({id,nom,prix}) {
+function PizzaPanier ({id, nom, prix, enleverPanier}) {
     return (
       <>
         <div>
-          {nom} <b>{prix}</b>
+        <button className="btn btn-danger" onClick={() => enleverPanier({id, nom, prix, enleverPanier})}>x</button>{nom} <b>{prix}</b>
         </div>
       </>
     );

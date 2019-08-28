@@ -3,6 +3,7 @@ import Pizza from "./Pizza";
 import fetchPizza from "../services/fetchPizza"
 import Chargement from "./Chargement";
 import Filter from "./Filter"
+import ErrorBoundary from "./ErrorBoundary";
 
 class PizzaList extends Component {
 
@@ -34,11 +35,15 @@ class PizzaList extends Component {
         pizzaFilteredList: pizzas,
         isLoading:false
       });
-    })
+    }).catch((e)=>{
+      this.setState({isLoading: false});
+    });
   }
 
   render() {
-    if (this.state.isLoading) {
+    if (this.state.pizzaList.length === 0 && this.state.isLoading === false) {
+      throw new Error("Un problème a eu lieu pendant le chargement des pizzas");
+    } else if (this.state.isLoading) {
       return <Chargement/>;
     }
     //console.log("liste des pizza filtrées ", this.state.pizzaList);
@@ -53,7 +58,7 @@ class PizzaList extends Component {
         <div className="columns is-multiline">
           {this.state.pizzaFilteredList.map((pizza) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-                <Pizza id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.props.ajoutPanier}/>
+                <Pizza id={pizza.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.props.ajoutPanier}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </div>
           ))}

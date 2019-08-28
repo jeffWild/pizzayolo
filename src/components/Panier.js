@@ -4,12 +4,13 @@ import PizzaPanier from "./PizzaPanier";
 class Panier extends Component {
 
   render() {
+    console.log(this.props.pizzaPanierList);
     return (
       <>
         <h2 className="title is-h2">Mon Panier</h2>
         {this.props.pizzaPanierList.map((pizzaPanier) => (
             <ul key={pizzaPanier.id}>
-                <PizzaPanier nom={pizzaPanier.nom} prix={pizzaPanier.prix} pizzaPanier={pizzaPanier.id}/>
+                <PizzaPanier nom={pizzaPanier.nom} prix={pizzaPanier.prix} id={pizzaPanier.id} enleverPanier={this.props.enleverPanier}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </ul>
           ))}
