@@ -22,7 +22,7 @@ function Pizza ({nom,prix,ingredients,ajoutPanier}) {
               <div className="content">{ingredients}</div>
               <button type="button" 
                     className="button is-primary is-small is-rounded"
-                    onClick={ajoutPanier}>
+                    onClick={() => ajoutPanier({nom,prix})}>
                 Ajouter au panier
               </button>
             </div>

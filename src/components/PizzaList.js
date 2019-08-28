@@ -21,11 +21,11 @@ class PizzaList extends Component {
   //ajoutPanier = function(pizza) {
   //   this.state.pizzaSelectionneesList = [...this.state.pizzaSelectionneesList, pizza];
   // }
-  ajoutPanier = (event) => {
-    this.setState({counter:this.state.counter+1});
-    console.log("on passe dans ajoutPanier", this.state.counter);
-    console.log("ajoutPanier", event);
-  };
+  // ajoutPanier = (event) => {
+  //   this.setState({counter:this.state.counter+1});
+  //   console.log("on passe dans ajoutPanier", this.state.counter);
+  //   console.log("ajoutPanier", event);
+  // };
 
   updateFilter = (event) => {
     //console.log("passage dans le updateFilter, filtre: ", event.target.value);
@@ -61,9 +61,9 @@ class PizzaList extends Component {
           </div>
         </article>
         <div className="columns is-multiline">
-          {this.state.pizzaFilteredList.map((pizza, i) => (
+          {this.state.pizzaFilteredList.map((pizza) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-                <Pizza id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
+                <Pizza id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.props.ajoutPanier}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </div>
           ))}
