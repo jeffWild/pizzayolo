@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import PizzaList from "./PizzaList";
-import fetchPizza from "../services/fetchPizza"
-import Chargement from "./Chargement";
+import PizzaList from "../pizza/PizzaList";
+import fetchPizza from "../../services/fetchPizza"
+import Chargement from "../utils/Chargement";
 
 class PizzaListContainer extends Component {
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Pizza from "./Pizza";
-import Filter from "./Filter"
+import Pizza from "../pizza/Pizza";
+import Filter from "../utils/Filter"
 
 export default function PizzaList(props) {
   return (

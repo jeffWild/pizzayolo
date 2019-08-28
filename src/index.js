@@ -6,13 +6,14 @@ import "./assets/styles.scss";
 
 import TopBar from "./components/TopBar";
 import Accueil from "./components/Accueil";
-import MainPizza from "./components/MainPizza";
+import MainPizza from "./components/pizza/MainPizza";
 
 function App() {
   return (
     <>
       <div className="App">
         <TopBar />
+        <Accueil />
         <MainPizza />
       </div>
     </>

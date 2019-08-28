@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Panier from "./Panier";
-import ErrorBoundary from "./ErrorBoundary";
-import PizzaListContainer from "./PizzaListContainer";
+import Panier from "../panier/Panier";
+import ErrorBoundary from "../utils/ErrorBoundary";
+import PizzaListContainer from "../pizza/PizzaListContainer";
 
 class MainPizza extends Component {
 
