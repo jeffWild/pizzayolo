@@ -14,7 +14,7 @@ class PizzaList extends Component {
       pizzaList: [],
       isLoading: true,
       counter: 0,
-      pizzaListData:[]
+      pizzaFilteredList:[]
     };
   }
 
@@ -28,24 +28,20 @@ class PizzaList extends Component {
 
   updateFilter = (event) => {
     console.log("passage dans le updateFilter, filtre: ", event.target.value);
-    const pizzaListFiltered2 = this.state.pizzaListData.filter(pizza => {
+    const pizzaFilteredList = this.state.pizzaFilteredList.filter(pizza => {
       console.log("test de la pizza ", pizza.nom);
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    console.log("fin du updateFilter, il y a ", pizzaListFiltered2.length
+    console.log("fin du updateFilter, il y a ", pizzaFilteredList.length
                 , " dans la liste");
-    if (event.target.value !== "") {
-      this.setState({pizzaList: pizzaListFiltered2});
-    } else {
-      this.setState({pizzaList: this.state.pizzaListData});
-    }
+    this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
   componentDidMount() {
     fetchPizza().then(pizzas => {
       this.setState({
         pizzaList: pizzas,
-        pizzaListData: pizzas,
+        pizzaFilteredList: pizzas,
         isLoading:false
       });
     })
@@ -61,12 +57,11 @@ class PizzaList extends Component {
         <Filter updateFilter={this.updateFilter}/>
         <article className="message is-success">
           <div className="message-body">
-            {this.state.pizzaList.length} pizzas sélectionnées
+            <b>{`${this.state.pizzaFilteredList.length} pizzas disponibles`}</b>
           </div>
         </article>
         <div className="columns is-multiline">
-        <h1>nb pizzas dans le panier : {this.state.counter}</h1>
-          {this.state.pizzaList.map((pizza, i) => (
+          {this.state.pizzaFilteredList.map((pizza, i) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
                 <Pizza id={this.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.ajoutPanier}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
