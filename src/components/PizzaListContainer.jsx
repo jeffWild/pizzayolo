@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import Pizza from "./Pizza";
+import PizzaList from "./PizzaList";
 import fetchPizza from "../services/fetchPizza"
 import Chargement from "./Chargement";
-import Filter from "./Filter"
-import ErrorBoundary from "./ErrorBoundary";
 
-class PizzaList extends Component {
+class PizzaListContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -46,26 +44,14 @@ class PizzaList extends Component {
     } else if (this.state.isLoading) {
       return <Chargement/>;
     }
-    //console.log("liste des pizza filtrées ", this.state.pizzaList);
+  
     return (
-      <>
-        <Filter updateFilter={this.updateFilter}/>
-        <article className="message is-success">
-          <div className="message-body">
-            <b>{`${this.state.pizzaFilteredList.length} pizzas disponibles`}</b>
-          </div>
-        </article>
-        <div className="columns is-multiline">
-          {this.state.pizzaFilteredList.map((pizza) => (
-            <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-                <Pizza id={pizza.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={this.props.ajoutPanier}/>
-                {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
-              </div>
-          ))}
-        </div>
-      </>
+      <PizzaList 
+      updateFilter={this.updateFilter} 
+      pizzaFilteredList={this.state.pizzaFilteredList} 
+      ajoutPanier={this.props.ajoutPanier}/>
     );
   }
 }
 
-export default PizzaList;
+export default PizzaListContainer;

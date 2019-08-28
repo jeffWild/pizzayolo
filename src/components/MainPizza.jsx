@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import PizzaList from "./PizzaList";
 import Panier from "./Panier";
 import ErrorBoundary from "./ErrorBoundary";
+import PizzaListContainer from "./PizzaListContainer";
 
 class MainPizza extends Component {
 
@@ -43,7 +43,7 @@ class MainPizza extends Component {
             <div className="filter-container">
               <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
             </div>
-            <PizzaList ajoutPanier={this.ajoutPanier} />
+            <PizzaListContainer ajoutPanier={this.ajoutPanier} />
           </div>
           <div className="column is-2-desktop is-12-tablet">
             <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} enleverPanier={this.enleverPanier}/>
