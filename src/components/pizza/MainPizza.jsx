@@ -10,13 +10,19 @@ class MainPizza extends Component {
     super(props);
 
     this.state = {
-      pizzaPanierList: []
+      pizzaPanierList: [],
+      sequence: 0
     };
   }
 
-  ajoutPanier = (pizzaPanier) => {
-    this.setState({pizzaPanierList: [...this.state.pizzaPanierList, pizzaPanier]});
-    console.log("ajoutPanier MAIN", pizzaPanier);
+  incrementeSequence = () => {
+    this.setState({sequence: this.state.sequence + 1});
+  };
+
+  ajoutPanier = ({id, nom, prix}) => {
+    this.setState({pizzaPanierList: [...this.state.pizzaPanierList, {id: this.state.sequence, nom: nom, prix: prix}]});
+    this.incrementeSequence();
+    console.log("ajoutPanier MAIN", this.state.sequence);
   };
 
   viderPanier = () => {
@@ -35,6 +41,7 @@ class MainPizza extends Component {
   };
 
   render() {
+    console.log("séquence : ", this.state.sequence);
     return (
       <>
         <ErrorBoundary>
