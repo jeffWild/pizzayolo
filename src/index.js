@@ -1,20 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import "bulma/css/bulma.css";
 import "./assets/styles.scss";
 
 import TopBar from "./components/TopBar";
-import Accueil from "./components/Accueil";
-import MainPizza from "./components/pizza/MainPizza";
+import Router from "./components/Router";
 
 function App() {
   return (
     <>
+      
       <div className="App">
-        <TopBar />
-        <Accueil />
-        <MainPizza />
+        <BrowserRouter>
+          <TopBar />
+          <Router />
+        </BrowserRouter>
       </div>
     </>
   );

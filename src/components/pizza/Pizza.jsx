@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Pizza({ id, nom, prix, ingredients, ajoutPanier }) {
   return (
@@ -11,7 +12,7 @@ function Pizza({ id, nom, prix, ingredients, ajoutPanier }) {
               <div className="media-content">
                 <div className="columns">
                   <div className="column is-9">
-                    <p className="title is-4">{nom}</p>
+                    <Link to={`pizza/${nom}`} className="title is-4">{nom}</Link>
                   </div>
                   <div className="column is-3">
                     <p className="title is-4 has-text-primary">{prix}€</p>

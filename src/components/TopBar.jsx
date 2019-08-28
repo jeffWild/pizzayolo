@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Logo from "../assets/Pizza-Yolo.png";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-class TopBar extends Component {
-  render() {
+export default function TopBar () {
     return (
-      <nav className="is-primary navbar">
+      <div className="topbar">
+        <nav className="is-primary navbar">
         <div className="navbar-brand">
-          <a className="navbar-item active" href="#">
-            <img src={Logo} alt="PizzaYolo logo" />
-          </a>
+            <Link className="navbar-item" exact to="/">
+              <img src={Logo} alt="PizzaYolo logo" />
+            </Link>
           <button
             className="navbar-burger"
             data-target="navMenu"
@@ -22,17 +24,15 @@ class TopBar extends Component {
         </div>
         <div className="navbar-menu" id="navMenu">
           <div className="navbar-start">
-            <a className="navbar-item" href="#">
+            <NavLink className="navbar-item"exact to="/" activeClassName="selected">
               Accueil
-            </a>
-            <a className="navbar-item selected" href="#">
+            </NavLink>
+            <NavLink className="navbar-item" to="/pizzas" activeClassName="selected">
               Nos Pizzas
-            </a>
+            </NavLink>
           </div>
         </div>
       </nav>
+      </div>
     );
-  }
 }
-
-export default TopBar;

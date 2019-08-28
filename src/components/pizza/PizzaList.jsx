@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Pizza from "../pizza/Pizza";
 import Filter from "../utils/Filter"
+import PropTypes from "prop-types";
 
 export default function PizzaList(props) {
   return (
@@ -22,3 +23,16 @@ export default function PizzaList(props) {
     </>
   );
 }
+
+PizzaList.PropTypes = {
+  pizzaFilteredList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      nom: PropTypes.string.isRequired,
+      prix: PropTypes.number.isRequired,
+      ingredients: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  updateFilter:PropTypes.func.isRequired,
+  ajoutPanier:PropTypes.func.isRequired
+};
