@@ -5,7 +5,7 @@ function PizzaPanier ({id, nom, prix, enleverPanier}) {
     return (
       <>
         <div>
-        <button className="btn btn-danger" onClick={() => enleverPanier({id, nom, prix, enleverPanier})}>x</button>{nom} <b>{prix}</b>
+        <button className="button is-danger" onClick={() => enleverPanier({id, nom, prix, enleverPanier})}>x</button>{nom} <b>{prix}</b>
         </div>
       </>
     );
