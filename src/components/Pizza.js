@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function Pizza ({nom,prix,ingredients,ajoutPanier}) {
+function Pizza ({id,nom,prix,ingredients,ajoutPanier}) {
     return (
       <>
         <div className="pizza-link">
@@ -22,7 +22,7 @@ function Pizza ({nom,prix,ingredients,ajoutPanier}) {
               <div className="content">{ingredients}</div>
               <button type="button" 
                     className="button is-primary is-small is-rounded"
-                    onClick={() => ajoutPanier({nom,prix})}>
+                    onClick={() => ajoutPanier({id,nom,prix})}>
                 Ajouter au panier
               </button>
             </div>

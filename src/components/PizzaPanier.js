@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function PizzaPanier ({nom,prix}) {
+function PizzaPanier ({id,nom,prix}) {
     return (
       <>
         <div>

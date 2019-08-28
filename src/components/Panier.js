@@ -7,9 +7,9 @@ class Panier extends Component {
     return (
       <>
         <h2 className="title is-h2">Mon Panier</h2>
-        {this.props.pizzaPanierList.map((pizzaPanier, i) => (
-            <ul key={i}>
-                <PizzaPanier nom={pizzaPanier.nom} prix={pizzaPanier.prix}/>
+        {this.props.pizzaPanierList.map((pizzaPanier) => (
+            <ul key={pizzaPanier.id}>
+                <PizzaPanier nom={pizzaPanier.nom} prix={pizzaPanier.prix} pizzaPanier={pizzaPanier.id}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </ul>
           ))}

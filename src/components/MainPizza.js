@@ -19,7 +19,10 @@ class MainPizza extends Component {
   };
 
   viderPanier = () => {
-    this.setState({pizzaPanierList: []});
+    var result = confirm("Etes-vous sûr de vouloir vider le panier ?");
+    if (result) {
+      this.setState({pizzaPanierList: []});
+    }
   };
 
   render() {
