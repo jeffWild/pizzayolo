@@ -21,19 +21,19 @@ class PizzaList extends Component {
   //ajoutPanier = function(pizza) {
   //   this.state.pizzaSelectionneesList = [...this.state.pizzaSelectionneesList, pizza];
   // }
-  ajoutPanier = () => {
+  ajoutPanier = (event) => {
     this.setState({counter:this.state.counter+1});
     console.log("on passe dans ajoutPanier", this.state.counter);
+    console.log("ajoutPanier", event);
   };
 
   updateFilter = (event) => {
-    console.log("passage dans le updateFilter, filtre: ", event.target.value);
+    //console.log("passage dans le updateFilter, filtre: ", event.target.value);
     const pizzaFilteredList = this.state.pizzaFilteredList.filter(pizza => {
-      console.log("test de la pizza ", pizza.nom);
+      //console.log("test de la pizza ", pizza.nom);
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    console.log("fin du updateFilter, il y a ", pizzaFilteredList.length
-                , " dans la liste");
+    //console.log("fin du updateFilter, il y a ", pizzaFilteredList.length, " dans la liste");
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
@@ -51,7 +51,7 @@ class PizzaList extends Component {
     if (this.state.isLoading) {
       return <Chargement/>;
     }
-    console.log("liste des pizza filtrées ", this.state.pizzaList);
+    //console.log("liste des pizza filtrées ", this.state.pizzaList);
     return (
       <>
         <Filter updateFilter={this.updateFilter}/>
