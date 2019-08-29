@@ -24,7 +24,6 @@ class PizzaListContainer extends Component {
   };
 
   updateFilterIngredient = (event) => {
-    console.log("updateFilterIngredient")
     const pizzaFilteredList = this.state.pizzaList.filter(pizza => {
       return pizza.ingredients.toUpperCase().includes(event.target.value.toUpperCase());
     });

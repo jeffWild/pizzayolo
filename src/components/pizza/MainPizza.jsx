@@ -22,7 +22,6 @@ class MainPizza extends Component {
   ajoutPanier = ({id, nom, prix}) => {
     this.setState({pizzaPanierList: [...this.state.pizzaPanierList, {id: this.state.sequence, nom: nom, prix: prix}]});
     this.incrementeSequence();
-    console.log("ajoutPanier MAIN", this.state.sequence);
   };
 
   viderPanier = () => {
@@ -33,7 +32,6 @@ class MainPizza extends Component {
   };
 
   enleverPanier = (pizzaAEnlever) => {
-    console.log("enleverPanier", pizzaAEnlever.id);
     const filtered = this.state.pizzaPanierList.filter((pizzaPanier) => {
       return pizzaPanier.id !== pizzaAEnlever.id;
     });
@@ -41,7 +39,6 @@ class MainPizza extends Component {
   };
 
   render() {
-    console.log("séquence : ", this.state.sequence);
     return (
       <>
         <ErrorBoundary>

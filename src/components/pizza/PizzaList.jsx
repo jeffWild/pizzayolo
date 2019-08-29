@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Pizza from "../pizza/Pizza";
 import Filter from "../utils/Filter"
 import PropTypes from "prop-types";
