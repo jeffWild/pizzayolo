@@ -60,6 +60,7 @@ class PizzaListContainer extends Component {
     return (
       <>
           <PizzaList 
+          sequence={this.props.sequence}
           updateFilter={this.updateFilter} 
           updateFilterIngredient={this.updateFilterIngredient} 
           pizzaFilteredList={this.state.pizzaFilteredList}/>
@@ -69,7 +70,11 @@ class PizzaListContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return {pizzaList: state.pizzaReducer.pizzaList} // retrieve pizza list from the store, map it to 'pizzas' prop
+  console.log("sequence", state.pizzaReducer.sequence);
+  return {
+    pizzaList: state.pizzaReducer.pizzaList,
+    sequence: state.pizzaReducer.sequence
+  }
  };
 
  const mapDispatchToProps = dispatch => ({

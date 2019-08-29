@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { ajoutPanier } from "../panier/store/panierActions";
 
-function Pizza({ id, nom, prix, ingredients, ajoutPizzaPanier }) {
+function Pizza({ sequence, id, nom, prix, ingredients, ajoutPizzaPanier }) {
   return (
     <>
       <div className="pizza-link">
@@ -26,7 +26,7 @@ function Pizza({ id, nom, prix, ingredients, ajoutPizzaPanier }) {
             <button
               type="button"
               className="button is-primary is-small is-rounded"
-              onClick={() => ajoutPizzaPanier({ id, nom, prix })}
+              onClick={() => ajoutPizzaPanier({ sequence, nom, prix })}
             >
               Ajouter au panier
             </button>
@@ -46,9 +46,14 @@ Pizza.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  ajoutPizzaPanier: ({id, nom, prix}) =>  {
-    dispatch(ajoutPanier({id: id, nom: nom, prix: prix}))
+  ajoutPizzaPanier: ({sequence, nom, prix}) =>  {
+    dispatch(ajoutPanier({id: sequence, nom: nom, prix: prix}));
+    dispatch(incrementeSequence({sequence: sequence}));
    } // dispatch shortcut mapping
 });
+
+const incrementeSequence = () => {
+
+};
 
 export default connect(undefined, mapDispatchToProps)(Pizza);
