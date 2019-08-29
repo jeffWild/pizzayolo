@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PizzaList from "../pizza/PizzaList";
 import {fetchPizza} from "../../services/fetchPizza"
 import Chargement from "../utils/Chargement";
+import { connect } from 'react-redux';
+import { setPizzaList } from "./store/pizzaActions";
 
 class PizzaListContainer extends Component {
 
@@ -9,7 +11,6 @@ class PizzaListContainer extends Component {
     super(props);
 
     this.state = {
-      pizzaList: [],
       isLoading: true,
       counter: 0,
       pizzaFilteredList:[]
@@ -17,33 +18,44 @@ class PizzaListContainer extends Component {
   }
 
   updateFilter = (event) => {
-    const pizzaFilteredList = this.state.pizzaList.filter(pizza => {
+    console.log("updateFilter", event.target.value);
+    const pizzaFilteredList = this.props.pizzaList.filter(pizza => {
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
+    console.log("pizzaFilteredList", this.state.pizzaFilteredList);
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
   updateFilterIngredient = (event) => {
-    const pizzaFilteredList = this.state.pizzaList.filter(pizza => {
+    const pizzaFilteredList = this.props.pizzaList.filter(pizza => {
       return pizza.ingredients.toUpperCase().includes(event.target.value.toUpperCase());
     });
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
   componentDidMount() {
-    fetchPizza().then(pizzas => {
+    if (this.props.pizzaList.length === 0) {
+      fetchPizza().then(pizzas => {
+        this.props.setPizzas(pizzas);
+        this.setState({
+          pizzaFilteredList: pizzas,
+          isLoading:false
+        });
+      }).catch((e)=>{
+        this.setState({isLoading: false});
+      });
+    } else {
+      console.log("componentDidMount");
       this.setState({
-        pizzaList: pizzas,
-        pizzaFilteredList: pizzas,
+        pizzaFilteredList: this.props.pizzaList,
         isLoading:false
       });
-    }).catch((e)=>{
-      this.setState({isLoading: false});
-    });
+    }
   }
 
   render() {
-    if (this.state.pizzaList.length === 0 && this.state.isLoading === false) {
+    console.log("render", this.state.pizzaFilteredList);
+    if (this.props.pizzaList.length === 0 && this.state.isLoading === false) {
       throw new Error("Un problème a eu lieu pendant le chargement des pizzas");
     } else if (this.state.isLoading) {
       return <Chargement/>;
@@ -60,4 +72,14 @@ class PizzaListContainer extends Component {
   }
 }
 
-export default PizzaListContainer;
+const mapStateToProps = state => {
+  return {pizzaList: state.pizzaReducer.pizzaList} // retrieve pizza list from the store, map it to 'pizzas' prop
+ };
+
+ const mapDispatchToProps = dispatch => ({
+  setPizzas: (pizzaList) =>  {
+    dispatch(setPizzaList(pizzaList))
+   } // dispatch shortcut mapping
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(PizzaListContainer);

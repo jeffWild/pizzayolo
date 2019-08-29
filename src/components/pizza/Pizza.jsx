@@ -47,7 +47,6 @@ Pizza.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   ajoutPizzaPanier: ({id, nom, prix}) =>  {
-    console.log("ajoutPizzaPanier");
     dispatch(ajoutPanier({id: id, nom: nom, prix: prix}))
    } // dispatch shortcut mapping
 });

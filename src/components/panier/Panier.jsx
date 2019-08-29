@@ -15,7 +15,11 @@ export function Panier ({ pizzaPanierList, videPanier, history, enleverPanier })
       <h2 className="title is-h2">Mon Panier</h2>
       {pizzaPanierList.map((pizzaPanier) => (
           <ul key={pizzaPanier.id}>
-              <PizzaPanier nom={pizzaPanier.nom} prix={pizzaPanier.prix} id={pizzaPanier.id} enleverPanier={enleverPanier}/>
+              <PizzaPanier 
+              nom={pizzaPanier.nom} 
+              prix={pizzaPanier.prix} 
+              id={pizzaPanier.id} 
+              enleverPanier={enleverPanier}/>
               {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
             </ul>
         ))}
@@ -46,7 +50,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
    // dispatch shortcut mapping
   videPanier: () => {
-    console.log("mapDispatchToProps - viderPanier");
     dispatch(viderPanier())
   }
 });

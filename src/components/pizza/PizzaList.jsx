@@ -3,19 +3,19 @@ import Pizza from "../pizza/Pizza";
 import Filter from "../utils/Filter"
 import PropTypes from "prop-types";
 
-export default function PizzaList(props) {
+export function PizzaList({pizzaFilteredList, updateFilter, updateFilterIngredient}) {
   return (
     <>
-      <Filter placeholder="nom de la pizza" updateFilter={props.updateFilter}/>
-      <Filter placeholder="un ingrédient particulier" updateFilter={props.updateFilterIngredient}/>
+      <Filter placeholder="nom de la pizza" updateFilter={updateFilter}/>
+      <Filter placeholder="un ingrédient particulier" updateFilter={updateFilterIngredient}/>
       <article className="message is-success">
         <div className="message-body">
-          <b>{`${props.pizzaFilteredList.length} pizzas disponibles`}</b>
+          <b>{`${pizzaFilteredList.length} pizzas disponibles`}</b>
         </div>
       </article>
       <div className="hero is-fullheight">
         <div className="columns is-multiline">
-          {props.pizzaFilteredList.map((pizza) => (
+          {pizzaFilteredList.map((pizza) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
                 <Pizza 
                 id={pizza.id} 
@@ -43,3 +43,5 @@ PizzaList.propTypes = {
   updateFilter:PropTypes.func.isRequired,
   ajoutPanier:PropTypes.func.isRequired
 };
+
+export default PizzaList;
