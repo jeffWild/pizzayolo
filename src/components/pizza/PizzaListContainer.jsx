@@ -18,11 +18,9 @@ class PizzaListContainer extends Component {
   }
 
   updateFilter = (event) => {
-    console.log("updateFilter", event.target.value);
     const pizzaFilteredList = this.props.pizzaList.filter(pizza => {
       return pizza.nom.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    console.log("pizzaFilteredList", this.state.pizzaFilteredList);
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
@@ -45,7 +43,6 @@ class PizzaListContainer extends Component {
         this.setState({isLoading: false});
       });
     } else {
-      console.log("componentDidMount");
       this.setState({
         pizzaFilteredList: this.props.pizzaList,
         isLoading:false
@@ -54,7 +51,6 @@ class PizzaListContainer extends Component {
   }
 
   render() {
-    console.log("render", this.state.pizzaFilteredList);
     if (this.props.pizzaList.length === 0 && this.state.isLoading === false) {
       throw new Error("Un problème a eu lieu pendant le chargement des pizzas");
     } else if (this.state.isLoading) {

@@ -13,7 +13,6 @@ class PizzaFocus extends Component {
 
   componentDidMount() {
     fetchPizzaByName(this.props.match.params.nom.toLowerCase()).then(pizza => {
-      console.log("la pizza reine :", pizza);
       this.setState({
         pizza: pizza
       });
