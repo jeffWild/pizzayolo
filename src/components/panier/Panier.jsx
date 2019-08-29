@@ -29,7 +29,11 @@ export function Panier ({ pizzaPanierList, videPanier, history, enleverPanier })
         </b>
       </p>
       <br />
-      <button className="button is-warning" onClick={() => videPanier()}>Vider le panier</button>
+      <button className="button is-warning" onClick={() => {
+        var result = confirm("Etes-vous sûr de vouloir vider le panier ?");
+        if (result) {
+          videPanier()
+        }}}>Vider le panier</button>
       <button className="button is-success" onClick={payer}>Payer</button>
     </>
   );

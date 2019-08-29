@@ -24,13 +24,6 @@ class MainPizza extends Component {
     this.incrementeSequence();
   };
 
-  viderPanier = () => {
-    var result = confirm("Etes-vous sûr de vouloir vider le panier ?");
-    if (result) {
-      this.setState({pizzaPanierList: []});
-    }
-  };
-
   enleverPanier = (pizzaAEnlever) => {
     const filtered = this.state.pizzaPanierList.filter((pizzaPanier) => {
       return pizzaPanier.id !== pizzaAEnlever.id;
