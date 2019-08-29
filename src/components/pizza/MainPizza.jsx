@@ -10,19 +10,9 @@ class MainPizza extends Component {
     super(props);
 
     this.state = {
-      pizzaPanierList: [],
-      sequence: 0
+      pizzaPanierList: []
     };
   }
-
-  incrementeSequence = () => {
-    this.setState({sequence: this.state.sequence + 1});
-  };
-
-  ajoutPanier = ({id, nom, prix}) => {
-    this.setState({pizzaPanierList: [...this.state.pizzaPanierList, {id: this.state.sequence, nom: nom, prix: prix}]});
-    this.incrementeSequence();
-  };
 
   enleverPanier = (pizzaAEnlever) => {
     const filtered = this.state.pizzaPanierList.filter((pizzaPanier) => {
@@ -40,7 +30,7 @@ class MainPizza extends Component {
               <div className="filter-container">
                 <h1 className="title is-h1">Nos Délicieuses Pizzas</h1>
               </div>
-              <PizzaListContainer ajoutPanier={this.ajoutPanier} />
+              <PizzaListContainer />
             </div>
             <div className="column is-2-desktop is-12-tablet">
               <Panier enleverPanier={this.enleverPanier}/>

@@ -21,8 +21,7 @@ export default function PizzaList(props) {
                 id={pizza.id} 
                 nom={pizza.nom} 
                 prix={pizza.prix} 
-                ingredients={pizza.ingredients} 
-                ajoutPanier={props.ajoutPanier}/>
+                ingredients={pizza.ingredients} />
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </div>
           ))}

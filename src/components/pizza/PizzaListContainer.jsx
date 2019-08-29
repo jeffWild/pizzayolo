@@ -54,8 +54,7 @@ class PizzaListContainer extends Component {
           <PizzaList 
           updateFilter={this.updateFilter} 
           updateFilterIngredient={this.updateFilterIngredient} 
-          pizzaFilteredList={this.state.pizzaFilteredList} 
-          ajoutPanier={this.props.ajoutPanier}/>
+          pizzaFilteredList={this.state.pizzaFilteredList}/>
       </>
     );
   }

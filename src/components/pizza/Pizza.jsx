@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { ajoutPanier } from "../panier/store/panierActions";
 
-function Pizza({ id, nom, prix, ingredients, ajoutPanier }) {
+function Pizza({ id, nom, prix, ingredients, ajoutPizzaPanier }) {
   return (
     <>
       <div className="pizza-link">
@@ -24,7 +26,7 @@ function Pizza({ id, nom, prix, ingredients, ajoutPanier }) {
             <button
               type="button"
               className="button is-primary is-small is-rounded"
-              onClick={() => ajoutPanier({ id, nom, prix })}
+              onClick={() => ajoutPizzaPanier({ id, nom, prix })}
             >
               Ajouter au panier
             </button>
@@ -43,4 +45,11 @@ Pizza.propTypes = {
   prix: PropTypes.number.isRequired
 };
 
-export default Pizza;
+const mapDispatchToProps = dispatch => ({
+  ajoutPizzaPanier: ({id, nom, prix}) =>  {
+    console.log("ajoutPizzaPanier");
+    dispatch(ajoutPanier({id: id, nom: nom, prix: prix}))
+   } // dispatch shortcut mapping
+});
+
+export default connect(undefined, mapDispatchToProps)(Pizza);

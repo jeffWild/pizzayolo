@@ -8,6 +8,8 @@ const panierReducer = (state = initialState, action) => {
       return { ...state, pizzaPanierList: initialState.pizzaPanierList };//au cas où on aurait différents types d'éléments dans le panier
     case "AJOUT_PANIER":
       return {...state, pizzaPanierList: [...state.pizzaPanierList, { id: action.id, nom: action.nom, prix: action.prix }]};
+    //case "ENLEVER_PANIER":
+      //return {...state, pizzaPanierList: [...state.pizzaPanierList, { id: action.id, nom: action.nom, prix: action.prix }]};  
     default:
       return state;
   }
