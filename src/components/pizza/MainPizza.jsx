@@ -50,7 +50,7 @@ class MainPizza extends Component {
               <PizzaListContainer ajoutPanier={this.ajoutPanier} />
             </div>
             <div className="column is-2-desktop is-12-tablet">
-              <Panier pizzaPanierList={this.state.pizzaPanierList} viderPanier={this.viderPanier} enleverPanier={this.enleverPanier}/>
+              <Panier enleverPanier={this.enleverPanier}/>
             </div>
           </div>
         </ErrorBoundary>
