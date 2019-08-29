@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 export default function PizzaList(props) {
   return (
     <>
-      <Filter updateFilter={props.updateFilter}/>
+      <Filter placeholder="nom de la pizza" updateFilter={props.updateFilter}/>
+      <Filter placeholder="un ingrédient particulier" updateFilter={props.updateFilterIngredient}/>
       <article className="message is-success">
         <div className="message-body">
           <b>{`${props.pizzaFilteredList.length} pizzas disponibles`}</b>

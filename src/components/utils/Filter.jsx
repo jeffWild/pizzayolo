@@ -10,7 +10,7 @@ class Filter extends Component {
             name="filter"
             className="input is-primary"
             type="text"
-            placeholder="nom de la pizza"
+            placeholder={this.props.placeholder}
             onChange={this.props.updateFilter}
           />
         </div>

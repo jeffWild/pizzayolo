@@ -23,6 +23,14 @@ class PizzaListContainer extends Component {
     this.setState({pizzaFilteredList: pizzaFilteredList})
   };
 
+  updateFilterIngredient = (event) => {
+    console.log("updateFilterIngredient")
+    const pizzaFilteredList = this.state.pizzaList.filter(pizza => {
+      return pizza.ingredients.toUpperCase().includes(event.target.value.toUpperCase());
+    });
+    this.setState({pizzaFilteredList: pizzaFilteredList})
+  };
+
   componentDidMount() {
     fetchPizza().then(pizzas => {
       this.setState({
@@ -46,6 +54,7 @@ class PizzaListContainer extends Component {
       <>
           <PizzaList 
           updateFilter={this.updateFilter} 
+          updateFilterIngredient={this.updateFilterIngredient} 
           pizzaFilteredList={this.state.pizzaFilteredList} 
           ajoutPanier={this.props.ajoutPanier}/>
       </>
