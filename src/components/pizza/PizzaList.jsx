@@ -17,7 +17,12 @@ export default function PizzaList(props) {
         <div className="columns is-multiline">
           {props.pizzaFilteredList.map((pizza) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-                <Pizza id={pizza.id} nom={pizza.nom} prix={pizza.prix} ingredients={pizza.ingredients} ajoutPanier={props.ajoutPanier}/>
+                <Pizza 
+                id={pizza.id} 
+                nom={pizza.nom} 
+                prix={pizza.prix} 
+                ingredients={pizza.ingredients} 
+                ajoutPanier={props.ajoutPanier}/>
                 {/* <Pizza {...pizza}/> --> déstructuré : s'occuper lui même d'attribuer chaque proprs*/}
               </div>
           ))}

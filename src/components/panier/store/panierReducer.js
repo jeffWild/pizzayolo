@@ -1,8 +1,8 @@
 const initialState = {
-  pizzaPanierList : [],
+  pizzaPanierList : []
 }
 
-const panierReducer = (state, action) => {
+const panierReducer = (state = initialState, action) => {
   switch (action.type) {
     case "VIDER_PANIER":
       return { ...state, pizzaPanierList: initialState.pizzaPanierList };//au cas où on aurait différents types d'éléments dans le panier
