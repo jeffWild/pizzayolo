@@ -56,11 +56,9 @@ class PizzaListContainer extends Component {
     } else if (this.state.isLoading) {
       return <Chargement/>;
     }
-  
     return (
       <>
           <PizzaList 
-          sequence={this.props.sequence}
           updateFilter={this.updateFilter} 
           updateFilterIngredient={this.updateFilterIngredient} 
           pizzaFilteredList={this.state.pizzaFilteredList}/>
@@ -70,7 +68,6 @@ class PizzaListContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("sequence", state.pizzaReducer.sequence);
   return {
     pizzaList: state.pizzaReducer.pizzaList,
     sequence: state.pizzaReducer.sequence
@@ -80,7 +77,7 @@ const mapStateToProps = state => {
  const mapDispatchToProps = dispatch => ({
   setPizzas: (pizzaList) =>  {
     dispatch(setPizzaList(pizzaList))
-   } // dispatch shortcut mapping
+   }// dispatch shortcut mapping
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(PizzaListContainer);

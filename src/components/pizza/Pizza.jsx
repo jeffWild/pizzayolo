@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { ajoutPanier } from "../panier/store/panierActions";
+import { ajoutPanier, incrementeSequence } from "../panier/store/panierActions";
 
-function Pizza({ sequence, id, nom, prix, ingredients, ajoutPizzaPanier }) {
+function Pizza({ sequence, nom, prix, ingredients, ajoutPizzaPanier }) {
   return (
     <>
       <div className="pizza-link">
@@ -26,7 +26,7 @@ function Pizza({ sequence, id, nom, prix, ingredients, ajoutPizzaPanier }) {
             <button
               type="button"
               className="button is-primary is-small is-rounded"
-              onClick={() => ajoutPizzaPanier({ sequence, nom, prix })}
+              onClick={() => {ajoutPizzaPanier({ sequence, nom, prix })}}
             >
               Ajouter au panier
             </button>
@@ -45,15 +45,22 @@ Pizza.propTypes = {
   prix: PropTypes.number.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  ajoutPizzaPanier: ({sequence, nom, prix}) =>  {
-    dispatch(ajoutPanier({id: sequence, nom: nom, prix: prix}));
-    dispatch(incrementeSequence({sequence: sequence}));
-   } // dispatch shortcut mapping
-});
-
-const incrementeSequence = () => {
-
+const mapStateToProps = state => {
+  console.log("Pizza.jsx - mapStateToProps - state", state);
+  return {
+    sequence: state.pizzaReducer.sequence
+  }
 };
 
-export default connect(undefined, mapDispatchToProps)(Pizza);
+const mapDispatchToProps = dispatch => ({
+  ajoutPizzaPanier: ({sequence, nom, prix}) =>  {
+    console.log("Pizza.jsx - mapDispatchToProps - ajoutPizzaPanier - sequence : ", sequence);
+    dispatch(ajoutPanier({id: sequence, nom: nom, prix: prix}), incrementeSequence(sequence));
+   },
+  // incrSeq: (sequence) => {
+  //   console.log("Pizza.jsx - mapDispatchToProps - incrSeq - sequence : ", sequence);
+  //   dispatch(incrementeSequence(sequence));
+  // } // dispatch shortcut mapping
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pizza);

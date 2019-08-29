@@ -4,10 +4,3 @@ export const setPizzaList = (pizzaList) => (
     pizzaList: pizzaList // pas de convention de nom
   }
 );
-
-export const incrementeSequence = (sequence) => (
-  {
-    type: "INCR_SEQUENCE",
-    sequence: sequence
-  }
-);

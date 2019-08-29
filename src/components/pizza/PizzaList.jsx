@@ -3,7 +3,7 @@ import Pizza from "../pizza/Pizza";
 import Filter from "../utils/Filter"
 import PropTypes from "prop-types";
 
-export function PizzaList({sequence, pizzaFilteredList, updateFilter, updateFilterIngredient}) {
+export function PizzaList({pizzaFilteredList, updateFilter, updateFilterIngredient}) {
   return (
     <>
       <Filter placeholder="nom de la pizza" updateFilter={updateFilter}/>
@@ -17,8 +17,7 @@ export function PizzaList({sequence, pizzaFilteredList, updateFilter, updateFilt
         <div className="columns is-multiline">
           {pizzaFilteredList.map((pizza) => (
             <div className="column is-4-desktop is-6-tablet" key={pizza.id}>
-                <Pizza 
-                sequence={sequence}
+                <Pizza
                 id={pizza.id} 
                 nom={pizza.nom} 
                 prix={pizza.prix} 

@@ -13,3 +13,10 @@ export const ajoutPanier = ({id, nom, prix}) => (
     prix: prix
   }
 );
+
+export const incrementeSequence = (sequence) => (
+  {
+    type: "INCR_SEQUENCE",
+    sequence: sequence
+  }
+);
