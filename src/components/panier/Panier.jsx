@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PizzaPanier from "./PizzaPanier";
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Panier extends Component {
 

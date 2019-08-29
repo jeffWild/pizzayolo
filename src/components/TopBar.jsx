@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Logo from "../assets/Pizza-Yolo.png";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
